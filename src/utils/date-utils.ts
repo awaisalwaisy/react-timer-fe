@@ -74,15 +74,19 @@ export const formatTimeDifference = (
   hours: number;
   // days: number;
 } => {
-  const timeDiffSecs = Math.floor(timeDifferenceInMilliseconds / 1000);
-  const timeDiffMins = Math.floor(timeDiffSecs / 60);
-  const timeDiffHours = Math.floor(timeDiffMins / 60);
+  // Convert the time difference to positive if it's negative
+  const timeDifference = Math.max(timeDifferenceInMilliseconds, 0);
+
+  const remainingSeconds = Math.floor((timeDifference / 1000) % 60);
+  const remainingMinutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+  const remainingHours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+
   // const timeDiffDays = Math.floor(timeDiffHours / 24);
 
   return {
-    seconds: timeDiffSecs,
-    minutes: timeDiffMins,
-    hours: timeDiffHours,
+    seconds: remainingSeconds,
+    minutes: remainingMinutes,
+    hours: remainingHours,
     // days: timeDiffDays,
   };
 };
