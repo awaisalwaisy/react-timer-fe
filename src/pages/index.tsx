@@ -1,16 +1,11 @@
-import { HeyDev } from "@/components";
-import { Button } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import CountdownTimer from "@/components/CountdownTimer";
 
-const Home = () => {
+function Home() {
   return (
     <main className="page">
-      <Link to="/about">
-        <Button color="primary">About</Button>
-      </Link>
-      <HeyDev />
+      <CountdownTimer />
     </main>
   );
-};
+}
 
 export default Home;
